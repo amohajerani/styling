@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Past entries{% endblock %} {% block content %}
+<div class="content">
+  <div>
+    <a href="/subscriptions">Shared content</a>
+    <br>
+    <a href="/chat">Write today's journal</a>
+    <h6>Your journal from prior days</h6>
+    <img src="{{ url_for('static', filename='image.png') }}" alt="Word cloud">
+    <ul>
+      {% for summary in summaries %}
+      {% for date, summary in summary.items() %}
+      <li><a href="/past_entries/{{date}}">{{date}}</a></li>
+      <p>{{summary}}</p>
+      {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+
+  

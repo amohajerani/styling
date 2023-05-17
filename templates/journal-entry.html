@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ date }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h4>{{ date }}</h4>
+        {% for entry in entries %}
+        <p style="{% if entry['role']=='bot' %}font-style: italic;background-color: lightgray;{% endif %}">
+            {{ entry['txt'] }}
+        </p>
+        {% endfor %}
+    </div>
+{% endblock %}
