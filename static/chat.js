@@ -1,3 +1,42 @@
+function updateDateHeading() {
+  var dateHeading = document.getElementById("dateHeading")
+  var currentDate = new Date()
+  var options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }
+  dateHeading.textContent = currentDate.toLocaleDateString(undefined, options)
+}
+
+// Call the function to update the date heading
+updateDateHeading()
+
+document.getElementById("submitBtn").addEventListener("click", function () {
+  var diaryContent = document.getElementById("diary").innerHTML
+  var response = "Your response from the server."
+
+  var responseElement = document.createElement("div")
+  responseElement.className = "entry"
+  var responseText = document.createElement("p")
+  responseText.innerHTML = response
+  responseElement.appendChild(responseText)
+
+  var diary = document.getElementById("diary")
+  diary.appendChild(responseElement)
+
+  var userInput = document.createElement("div")
+  userInput.className = "entry user-input"
+  userInput.innerHTML = '<p contenteditable="true"></p>'
+  diary.appendChild(userInput)
+
+  diary.scrollTop = diary.scrollHeight
+
+  userInput.firstChild.focus()
+})
+
+// below is legacy
+
 let quietMode = false
 
 // Add event listener to checkbox
