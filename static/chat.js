@@ -1,3 +1,18 @@
+let quietMode = false
+
+// Add event listener to checkbox
+const checkbox = document.getElementById("quietBtn")
+checkbox.addEventListener("change", function () {
+  quietMode = this.checked
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+  var quietButton = document.getElementById("quietBtn")
+
+  quietButton.addEventListener("click", function () {
+    quietButton.classList.toggle("active")
+  })
+})
 function updateDateHeading() {
   var dateHeading = document.getElementById("dateHeading")
   var currentDate = new Date()
@@ -14,11 +29,13 @@ updateDateHeading()
 
 document.getElementById("submitBtn").addEventListener("click", function () {
   var diaryContent = document.getElementById("diary").innerHTML
+  console.log(diaryContent)
   var response = "Your response from the server."
 
   var responseElement = document.createElement("div")
   responseElement.className = "entry"
   var responseText = document.createElement("p")
+  responseText.classList.add("message", "server")
   responseText.innerHTML = response
   responseElement.appendChild(responseText)
 
@@ -36,14 +53,6 @@ document.getElementById("submitBtn").addEventListener("click", function () {
 })
 
 // below is legacy
-
-let quietMode = false
-
-// Add event listener to checkbox
-const checkbox = document.getElementById("quietToggle")
-checkbox.addEventListener("change", function () {
-  quietMode = this.checked
-})
 
 let chatHistory = []
 

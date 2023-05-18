@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Diary Page</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-  <h1 id="dateHeading"></h1>
-  <div id="diary" contenteditable="true"></div> 
+{% extends "base.html" %}
+{% block title %}
+Past entries
+{% endblock %}
 
-  <div class="buttons-container">
-    <button id="submitBtn">Submit</button>
-    <button id="summaryBtn">Summary</button>
-    <button id="insightsBtn">Insights</button>
+{% block content %}
+  <div style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+    <div style="text-align: center; flex: 1;">
+      <h5 id="dateHeading"></h5>
+    </div>
+  </div>
+
+  <div style="text-align: left;">
+    <div id="diary" contenteditable="true"></div>
+  </div> 
+
+  <div style="text-align: center;">
+    <div class="buttons-container">
+      <button id="submitBtn">Submit</button>
+      <button id="summaryBtn">Summary</button>
+      <button id="insightsBtn">Insights</button>
+      <button id="quietBtn" class="quiet-button">Quiet</button>
+    </div>
   </div>
 
   <script src="{{ url_for('static', filename='chat.js') }}"></script>
-</body>
-</html>
+{% endblock %}
+
